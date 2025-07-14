@@ -447,6 +447,16 @@ def generate_image_stability(tool: ToolUse, **kwargs: Any) -> ToolResult:
                         f"Generated image using {model_id}. Finish reason: {finish_reason}"
                         f"{' ' + save_info if save_info else ''}"
                     ),
+                    "json": {
+                        "image_prompt": prompt,
+                        "output_filename": filename,
+                    },
+                },
+                {
+                    "image": {
+                        "format": output_format,
+                        "source": {"bytes": image_bytes},
+                    }
                 },
                 {"image": image_object},
             ],
